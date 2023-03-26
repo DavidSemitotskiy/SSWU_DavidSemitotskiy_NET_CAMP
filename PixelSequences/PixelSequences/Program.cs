@@ -14,7 +14,7 @@
             ColourSequenceInfo[] colourSequences = new ColourSequenceInfo[rows];
             for (int i = 0; i < rows; i++)
             {
-                colourSequences[i] = FindLongestHorizontalSequence(colours, i);
+                colourSequences[i] = FindLongestHorizontalSequenceColours(colours, i);
                 Console.WriteLine(colourSequences[i]);
             }
 
@@ -46,48 +46,41 @@
             }
         }
 
-        public static ColourSequenceInfo FindLongestHorizontalSequence(int[,] matrix, int row)
+        public static ColourSequenceInfo FindLongestHorizontalSequenceColours(int[,] matrix, int row)
         {
             int startIndex = 0;
             int endIndex = 0;
             int length = 1;
             int colour = matrix[row, 0];
 
-            int maxStartIndex = 0;
-            int maxEndIndex = 0;
-            int maxSequenceLength = 0;
-            int maxColour = -1;
+            int maxStartIndex = startIndex;
+            int maxEndIndex = endIndex;
+            int maxSequenceLength = length;
+            int maxColour = colour;
             for (int i = 1; i < matrix.GetLength(1); i++)
             {
-                if (matrix[row, i] == colour)
+                if (matrix[row, i] != colour)
                 {
-                    length++;
+                    startIndex = i;
+                    length = 1;
+                    colour = matrix[row, i];
+                }
+                else
+                {
+                    length += 1;
                 }
 
                 endIndex = i;
                 if (length > maxSequenceLength)
                 {
-                    maxSequenceLength = length;
                     maxStartIndex = startIndex;
                     maxEndIndex = endIndex;
                     maxColour = colour;
-                }
-
-                if (matrix[row, i] != colour)
-                {
-                    colour = matrix[row, i];
-                    startIndex = i;
-                    length = 1;
+                    maxSequenceLength = length;
                 }
             }
 
-            return new ColourSequenceInfo
-            {
-                StartSequence = maxStartIndex,
-                EndSequence = maxEndIndex,
-                Length = maxSequenceLength,
-                Colour = maxColour
-            };
+            return new ColourSequenceInfo(maxStartIndex, maxEndIndex, maxSequenceLength, maxColour);
         }
     }
 }

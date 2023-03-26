@@ -2,13 +2,21 @@
 {
     public class ColourSequenceInfo
     {
-        public int StartSequence { get; set; }
+        public ColourSequenceInfo(int startSequence, int endSequence, int length, int colour)
+        {
+            StartSequence = startSequence;
+            EndSequence = endSequence;
+            Length = length;
+            Colour = colour;
+        }
 
-        public int EndSequence { get; set; }
+        public int StartSequence { get; }
 
-        public int Length { get; set; }
+        public int EndSequence { get; }
 
-        public int Colour { get; set; }
+        public int Length { get; }
+
+        public int Colour { get; }
 
         public override string ToString()
         {
