@@ -2,8 +2,9 @@
 {
     public class ColourSequenceInfo
     {
-        public ColourSequenceInfo(int startSequence, int endSequence, int length, int colour)
+        public ColourSequenceInfo(int row, int startSequence, int endSequence, int length, int colour)
         {
+            IndexRow = row;
             StartSequence = startSequence;
             EndSequence = endSequence;
             Length = length;
@@ -14,13 +15,15 @@
 
         public int EndSequence { get; }
 
+        public int IndexRow { get; set; }
+
         public int Length { get; }
 
         public int Colour { get; }
 
         public override string ToString()
         {
-            return $"Start - {StartSequence}, End - {EndSequence}, Length - {Length}, Colour - {Colour}";
+            return $"Start - {IndexRow}{StartSequence}, End - {IndexRow}{EndSequence}, Length - {Length}, Colour - {Colour}";
         }
     }
 }
