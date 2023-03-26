@@ -9,8 +9,6 @@
             Console.WriteLine("Input cols number: ");
             int cols = int.Parse(Console.ReadLine());
             int[,] matrix = new int[rows, cols];
-            PrintMatrix(matrix);
-            Console.WriteLine();
             ClockWiseMatrixFill(matrix);
             PrintMatrix(matrix);
         }
@@ -35,70 +33,68 @@
 
             int count = 0;
 
-            bool leftDirection = false;
+            Direction currentDirection = Direction.Bottom;
+
             int leftOffset = 0;
 
-            bool rightDirection = false;
             int rightOffset = 0;
 
-            bool topDirection = false;
             int topOffset = 0;
 
-            bool bottomDirection = true;
             int bottomOffset = 0;
 
             while (count < matrix.Length)
             {
-                if (leftDirection)
+                switch (currentDirection)
                 {
-                    for (int i = cols - leftOffset - 1; i >= rightOffset; i--)
-                    {
-                        matrix[bottomOffset, i] = count;
-                        count += 1;
-                    }
+                    case Direction.Left:
+                        {
+                            for (int i = cols - leftOffset - 1; i >= rightOffset; i--)
+                            {
+                                matrix[bottomOffset, i] = count;
+                                count += 1;
+                            }
 
-                    bottomOffset += 1;
-                    leftDirection = false;
-                    bottomDirection = true;
-                }
+                            bottomOffset += 1;
+                            currentDirection = Direction.Bottom;
+                            break;
+                        }
+                    case Direction.Right:
+                        {
+                            for (int i = rightOffset; i < cols - leftOffset; i++)
+                            {
+                                matrix[rows - topOffset - 1, i] = count;
+                                count += 1;
+                            }
 
-                else if (rightDirection)
-                {
-                    for (int i = rightOffset; i < cols - leftOffset; i++)
-                    {
-                        matrix[rows - topOffset - 1, i] = count;
-                        count += 1;
-                    }
+                            topOffset += 1;
+                            currentDirection = Direction.Top;
+                            break;
+                        }
+                    case Direction.Top:
+                        {
+                            for (int i = rows - topOffset - 1; i >= bottomOffset; i--)
+                            {
+                                matrix[i, cols - leftOffset - 1] = count;
+                                count += 1;
+                            }
 
-                    topOffset += 1;
-                    rightDirection = false;
-                    topDirection = true;
-                }
+                            leftOffset += 1;
+                            currentDirection = Direction.Left;
+                            break;
+                        }
+                    case Direction.Bottom:
+                        {
+                            for (int i = bottomOffset; i < rows - topOffset; i++)
+                            {
+                                matrix[i, rightOffset] = count;
+                                count += 1;
+                            }
 
-                else if (topDirection)
-                {
-                    for (int i = rows - topOffset - 1; i >= bottomOffset; i--)
-                    {
-                        matrix[i, cols - leftOffset - 1] = count;
-                        count += 1;
-                    }
-
-                    leftOffset += 1;
-                    topDirection = false;
-                    leftDirection = true;
-                }
-
-                else if (bottomDirection)
-                {
-                    for (int i = bottomOffset; i < rows - topOffset; i++)
-                    {
-                        matrix[i, rightOffset] = count;
-                        count += 1;
-                    }
-
-                    rightOffset += 1;
-                    bottomDirection = false;
-                    rightDirection = true;
+                            rightOffset += 1;
+                            currentDirection = Direction.Right;
+                            break;
+                        }
                 }
             }
         }
