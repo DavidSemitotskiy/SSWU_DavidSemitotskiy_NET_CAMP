@@ -8,7 +8,7 @@
             bool parsingRowsResult = int.TryParse(Console.ReadLine(), out int rows);
             Console.WriteLine("Input number of cols: ");
             bool parsingColsResult = int.TryParse(Console.ReadLine(), out int cols);
-            if (!parsingRowsResult || !parsingColsResult || rows <= 1 || cols <= 1)
+            if (!parsingRowsResult || !parsingColsResult || rows <= 1 || cols <= 0)
             {
                 Console.WriteLine("Incorrect input");
                 return;
