@@ -5,10 +5,16 @@
         public static void Main()
         {
             Console.WriteLine("Input number of rows: ");
-            int rows = int.Parse(Console.ReadLine());
+            bool parsingRowsResult = int.TryParse(Console.ReadLine(), out int rows);
             Console.WriteLine("Input number of cols: ");
-            int columns = int.Parse(Console.ReadLine());
-            int[,] colours = new int[rows, columns];
+            bool parsingColsResult = int.TryParse(Console.ReadLine(), out int cols);
+            if (!parsingRowsResult || !parsingColsResult || rows <= 1 || cols <= 1)
+            {
+                Console.WriteLine("Incorrect input");
+                return;
+            }
+
+            int[,] colours = new int[rows, cols];
             colours.FillMatrixWithColours();
             colours.PrintMatrixOfColoursInConsole();
             Random random = new Random();
