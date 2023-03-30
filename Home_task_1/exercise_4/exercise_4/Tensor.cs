@@ -62,6 +62,11 @@ namespace exercise_4
             }
         }
 
+        public TensorInfo<T> GetTensorInfo()
+        {
+            return _tensorInfo;
+        }
+
         public override string ToString()
         {
             if (_tensorInfo.IsTensorValue())
