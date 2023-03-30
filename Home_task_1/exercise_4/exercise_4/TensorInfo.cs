@@ -32,6 +32,14 @@ namespace exercise_4
                 throw new RankException("Incorrect rank for tensor");
             }
 
+            foreach (var countElements in countElementsInEachDimension)
+            {
+                if (countElements == 0)
+                {
+                    throw new ArgumentException("Count elements in dimensions can't be 0");
+                }
+            }
+
             _countElementsInEachDimension = countElementsInEachDimension;
         }
 
