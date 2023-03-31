@@ -2,11 +2,10 @@
 {
     public class ConsoleMessageLogger : IMessageLogger
     {
-        public void Log(string message)
+        public void Log(string message, string? mark)
         {
-            string separator = new string('_', 10);
-            Console.WriteLine($"{DateTime.Now}: {message}");
-            Console.WriteLine(separator);
+            Console.WriteLine($"{mark}---{DateTime.Now}: {message}");
+            Console.WriteLine();
         }
     }
 }

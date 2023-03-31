@@ -14,5 +14,15 @@
 
             _fillingPower = fillingPower;
         }
+
+        public double FillUp()
+        {
+            return _fillingPower;
+        }
+
+        public override string ToString()
+        {
+            return $"Pump power - {_fillingPower}";
+        }
     }
 }
