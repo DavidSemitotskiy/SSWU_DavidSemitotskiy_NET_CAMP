@@ -59,5 +59,10 @@ namespace exercise
                 _currentLevel = _maxWaterLevel;
             }
         }
+
+        public override string ToString()
+        {
+            return $"Current water level: {_currentLevel}/{_maxWaterLevel}";
+        }
     }
 }

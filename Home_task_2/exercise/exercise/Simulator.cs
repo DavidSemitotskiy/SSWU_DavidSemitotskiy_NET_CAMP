@@ -42,5 +42,10 @@
                 _messageLogger.Log($"Consumer {id} consumed: {consumingWater}", "Simulator");
             }
         }
+
+        public override string ToString()
+        {
+            return $"Total count of consumers: {_consumers.Count} - Consumption: {_consumers.Sum(consumer => consumer.ConsumingWater)}";
+        }
     }
 }
