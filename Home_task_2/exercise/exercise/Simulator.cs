@@ -11,7 +11,7 @@
         public Simulator(List<Consumer> consumers, WaterTower waterTower, IMessageLogger messageLogger)
         {
             _consumers = consumers;
-            _waterTower = waterTower;
+            _waterTower = (WaterTower)waterTower.Clone();
             _messageLogger = messageLogger;
         }
 

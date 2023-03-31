@@ -1,6 +1,8 @@
-﻿namespace exercise
+﻿using System;
+
+namespace exercise
 {
-    public class Pump
+    public class Pump : ICloneable
     {
         private readonly double _fillingPower;
 
@@ -13,6 +15,11 @@
             }
 
             _fillingPower = fillingPower;
+        }
+
+        public object Clone()
+        {
+            return new Pump(_fillingPower);
         }
 
         public double FillUp()

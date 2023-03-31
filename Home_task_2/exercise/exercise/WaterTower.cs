@@ -1,6 +1,8 @@
-﻿namespace exercise
+﻿using System;
+
+namespace exercise
 {
-    public class WaterTower
+    public class WaterTower : ICloneable
     {
         private readonly double _maxWaterLevel;
 
@@ -17,12 +19,17 @@
             }
 
             _currentLevel = _maxWaterLevel = maxWaterLevel;
-            _pump = pump;
+            _pump = (Pump)pump.Clone();
         }
 
         public double CurrentLevel
         {
             get { return _currentLevel; }
+        }
+
+        public object Clone()
+        {
+            return new WaterTower(_maxWaterLevel, (Pump)_pump.Clone());
         }
 
         public double GiveWater(double consumingWater)
