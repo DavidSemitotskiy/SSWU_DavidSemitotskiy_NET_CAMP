@@ -72,6 +72,7 @@
                     maxSequenceLength = length;
                 }
             }
+            // Не врховано, що найдовша лінія може бути в кінці стрічки.
 
             return new ColourSequenceInfo(indexRow, maxStartIndex, maxEndIndex, maxSequenceLength, maxColour);
         }
