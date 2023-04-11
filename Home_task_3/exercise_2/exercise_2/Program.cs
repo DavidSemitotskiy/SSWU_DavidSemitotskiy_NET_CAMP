@@ -14,6 +14,7 @@
             Console.Write("Input replace string: ");
             string replace = Console.ReadLine();
             // Де у стрічки взялись такі методи?
+            // Вже побачила, що зробили розширення. Крутелик справжнісінький!!!
             string resultReplacing = userInput.ReplaceAllWordsWithDoubleLetters(replace);
             Console.WriteLine($"String after replacing: {resultReplacing}");
         }
