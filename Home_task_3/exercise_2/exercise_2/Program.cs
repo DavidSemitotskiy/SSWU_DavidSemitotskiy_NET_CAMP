@@ -13,6 +13,7 @@
             Console.WriteLine($"Count of words that starts with upper letter: {userInput.CountWordsStartsWithUpperLetter()}");
             Console.Write("Input replace string: ");
             string replace = Console.ReadLine();
+            // Де у стрічки взялись такі методи?
             string resultReplacing = userInput.ReplaceAllWordsWithDoubleLetters(replace);
             Console.WriteLine($"String after replacing: {resultReplacing}");
         }
