@@ -4,6 +4,8 @@
     {
         public static void Main()
         {
+            string email = "david.((sem)(dwaf)it.ot@sk((iy)";
+            Console.WriteLine(EmailValidator.ValidateEmail(email));
         }
     }
 }
