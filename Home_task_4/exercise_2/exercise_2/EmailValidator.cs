@@ -4,7 +4,9 @@ namespace exercise_2
 {
     public static class EmailValidator
     {
-        private static char[] _forbiddenSpecialSymbols = { '\"', '(', ')', ',', ':', ';', '<', '>', '[', ']', '\\' };
+        private static char[] _forbiddenSpecialSymbols = { '\"', '(', ')', ',', ':', ';', '<', '>', '[', ']', '\\', ' ' };
+
+        private static string[] _reservedDomains = { "com", "edu", "org", "uk", "de", "ua" };
 
         public static bool ValidateEmail(string email)
         {
@@ -13,17 +15,17 @@ namespace exercise_2
                 return false;
             }
 
-            if (!email.Contains('@'))
-            {
-                return false;
-            }
-
-            if (email.Count(c => c == '@') > 1 || email.StartsWith('@') || email.EndsWith('@'))
+            if (!email.Contains('@') || email.StartsWith('@') || email.EndsWith('@'))
             {
                 return false;
             }
 
             email = EmailWithoutComments(email);
+            if (email.Count(c => c == '@') > 1)
+            {
+                return false;
+            }
+
             string[] parts = email.Split('@');
             string localPart = parts[0];
             string domainPart = parts[1];
@@ -39,36 +41,17 @@ namespace exercise_2
 
             if (localPart.StartsWith('\"') && localPart.EndsWith('\"'))
             {
-            }
-            else
-            {
-                foreach (char specialSymbol in _forbiddenSpecialSymbols)
-                {
-                    if (localPart.Contains(specialSymbol))
-                    {
-                        return false;
-                    }
-                }
-
-                if (localPart.StartsWith('.') || localPart.EndsWith('.'))
+                string value = localPart[1..(localPart.Length - 1)];
+                if (value.Contains('\"') || value.Contains('\\'))
                 {
                     return false;
                 }
-
-                int countDots = localPart.Count(c => c == '.');
-                int offset = 0;
-                for (int i = 0; i < countDots; i++)
+            }
+            else
+            {
+                if (localPart.StartsWith('.') || localPart.EndsWith('.') || ContainsForbiddenSpecialSymbols(localPart) || ContainsDoubleDots(localPart))
                 {
-                    offset = localPart.IndexOf('.', offset);
-                    if (offset == localPart.Length - 1)
-                    {
-                        break;
-                    }
-
-                    if (localPart[offset + 1] == '.')
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
 
@@ -82,12 +65,85 @@ namespace exercise_2
                 return false;
             }
 
-            if (domainPart.Contains('_'))
+            if (domainPart.Contains('_') || domainPart.StartsWith('.') || domainPart.EndsWith('.') || ContainsForbiddenSpecialSymbols(domainPart))
+            {
+                return false;
+            }
+
+            string[] dnsMarks = domainPart.Split('.');
+            return ValidateDnsMarks(dnsMarks);
+        }
+
+        private static bool ValidateDnsMarks(string[] dnsMarks)
+        {
+            if (dnsMarks.FirstOrDefault(dns => dns == "") != null)
+            {
+                return false;
+            }
+
+            foreach (string dnsMark in dnsMarks)
+            {
+                if (dnsMark.Length > 63)
+                {
+                    return false;
+                }
+
+                if (dnsMark.StartsWith('-') || dnsMark.EndsWith('-'))
+                {
+                    return false;
+                }
+            }
+
+            bool contains = false;
+            foreach (var domain in _reservedDomains)
+            {
+                if (dnsMarks[dnsMarks.Length - 1] == domain)
+                {
+                    contains = true;
+                    break;
+                }
+            }
+
+            if (!contains)
             {
                 return false;
             }
 
             return true;
+        }
+
+        private static bool ContainsForbiddenSpecialSymbols(string part)
+        {
+            foreach (char specialSymbol in _forbiddenSpecialSymbols)
+            {
+                if (part.Contains(specialSymbol))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private static bool ContainsDoubleDots(string part)
+        {
+            int countDots = part.Count(c => c == '.');
+            int offset = 0;
+            for (int i = 0; i < countDots - 1; i++)
+            {
+                offset = part.IndexOf('.', offset);
+                if (offset == part.Length - 1)
+                {
+                    break;
+                }
+
+                if (part[offset + 1] == '.')
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static string EmailWithoutComments(string email)
