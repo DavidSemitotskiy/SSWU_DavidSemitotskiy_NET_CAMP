@@ -21,14 +21,9 @@ namespace exercise_2
             }
 
             email = EmailWithoutComments(email);
-            if (email.Count(c => c == '@') > 1)
-            {
-                return false;
-            }
-
-            string[] parts = email.Split('@');
-            string localPart = parts[0];
-            string domainPart = parts[1];
+            int lastIndex = email.LastIndexOf('@');
+            string localPart = email[..lastIndex];
+            string domainPart = email[(lastIndex + 1)..];
             return ValidateLocalPart(localPart) && ValidateDomainPart(domainPart);
         }
 
@@ -49,7 +44,7 @@ namespace exercise_2
             }
             else
             {
-                if (localPart.StartsWith('.') || localPart.EndsWith('.') || ContainsForbiddenSpecialSymbols(localPart) || ContainsDoubleDots(localPart))
+                if (localPart.Contains('@') || localPart.StartsWith('.') || localPart.EndsWith('.') || ContainsForbiddenSpecialSymbols(localPart) || ContainsDoubleDots(localPart))
                 {
                     return false;
                 }
