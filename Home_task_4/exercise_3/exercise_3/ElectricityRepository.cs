@@ -1,4 +1,6 @@
-﻿namespace exercise_3
+﻿using System.Globalization;
+
+namespace exercise_3
 {
     public class ElectricityRepository : IElectricityRepository
     {
@@ -14,6 +16,37 @@
             LoadDataFromSource();
         }
 
+        public QuarterInfo[] GetAllInfo()
+        {
+            return _quarterInfos;
+        }
+
+        public QuarterInfo GetQuarterInfo(int quarterNumber)
+        {
+            if (quarterNumber > _quarterCountInYear || quarterNumber < 0)
+            {
+                return null;
+            }
+
+            return _quarterInfos[quarterNumber];
+        }
+
+        public QuarterApartmentInfo FindApartmentWithZeroConsumption()
+        {
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).FirstOrDefault(quarterApartmentInfo => quarterApartmentInfo.OutputIndicator == 0);
+        }
+
+        public QuarterApartmentInfo GetInfoForApartmentByQuarter(int apartmentId, int quarterNumber)
+        {
+            if (quarterNumber > _quarterCountInYear || quarterNumber < 0)
+            {
+                return null;
+            }
+
+            QuarterInfo quarter = _quarterInfos[quarterNumber];
+            return quarter.QuarterApartmentInfos.FirstOrDefault(quarterApartmentInfo => quarterApartmentInfo.ApartmentInfo.Id == apartmentId);
+        }
+
         private void LoadDataFromSource()
         {
             using (StreamReader streamReader = new StreamReader(_dataLocation))
@@ -25,6 +58,11 @@
                     string[] info = lineQuarterInfo.Split("; ");
                     int countApartments = int.Parse(info[0]);
                     int quarterNumber = int.Parse(info[1]);
+                    NumberFormatInfo numberFormatInfo = new NumberFormatInfo
+                    {
+                        NumberDecimalSeparator = "."
+                    };
+                    decimal consumptionPrice = decimal.Parse(info[2], numberFormatInfo);
                     QuarterApartmentInfo[] quarterApartmentInfos = new QuarterApartmentInfo[countApartments];
                     int j = 0;
                     while (j < quarterApartmentInfos.Length)
@@ -32,14 +70,14 @@
                         string strQuarterApartmentInfo = streamReader.ReadLine();
                         string[] strQuarterApartmentInfoParts = strQuarterApartmentInfo.Split("; ");
                         ApartmentInfo apartmentInfo = new ApartmentInfo(int.Parse(strQuarterApartmentInfoParts[0]), strQuarterApartmentInfoParts[1], strQuarterApartmentInfoParts[2]);
-                        quarterApartmentInfos[j] = new QuarterApartmentInfo(apartmentInfo,
+                        quarterApartmentInfos[j] = new QuarterApartmentInfo(quarterNumber, consumptionPrice, apartmentInfo,
                             int.Parse(strQuarterApartmentInfoParts[3]), int.Parse(strQuarterApartmentInfoParts[4]),
                             DateTime.Parse(strQuarterApartmentInfoParts[5]), DateTime.Parse(strQuarterApartmentInfoParts[6]),
                             DateTime.Parse(strQuarterApartmentInfoParts[7]));
                         j++;
                     }
 
-                    _quarterInfos[i] = new QuarterInfo(quarterNumber, quarterApartmentInfos); 
+                    _quarterInfos[i] = new QuarterInfo(quarterNumber, consumptionPrice, quarterApartmentInfos); 
                 }
             }
         }

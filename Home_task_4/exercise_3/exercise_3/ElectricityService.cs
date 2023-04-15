@@ -8,5 +8,15 @@
         {
             _repository = repository;
         }
+
+        public IElectricityRepository ElectricityRepository
+        {
+            get => _repository;
+        }
+
+        private string FormatDataToTable()
+        {
+            return "";
+        }
     }
 }
