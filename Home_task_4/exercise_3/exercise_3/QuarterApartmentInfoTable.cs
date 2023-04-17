@@ -41,7 +41,7 @@ namespace exercise_3
                     quarterApartmentInfos[i].ApartmentInfo.LastName, quarterApartmentInfos[i].InputIndicator.ToString(),
                     quarterApartmentInfos[i].OutputIndicator.ToString(), quarterApartmentInfos[i].FirstQuarterMonth.ToString(dataFormat),
                     quarterApartmentInfos[i].SecondQuarterMonth.ToString(dataFormat), quarterApartmentInfos[i].ThirdQuarterMonth.ToString(dataFormat),
-                    quarterApartmentInfos[i].TotalPrice.ToString(), timeToNow.TotalDays.ToString() 
+                    quarterApartmentInfos[i].TotalPrice.ToString(), Math.Floor(timeToNow.TotalDays).ToString() 
                 });
             }
         }
