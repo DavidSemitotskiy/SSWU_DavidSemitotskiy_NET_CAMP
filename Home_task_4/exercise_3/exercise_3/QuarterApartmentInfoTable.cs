@@ -25,7 +25,7 @@ namespace exercise_3
         private void ToUserFormatTable(QuarterApartmentInfo[] quarterApartmentInfos)
         {
             _rows.Add(_columnsNames);
-            if (quarterApartmentInfos == null)
+            if (quarterApartmentInfos == null || (quarterApartmentInfos.Length == 1 && quarterApartmentInfos[0] == null))
             {
                 return;
             }

@@ -12,6 +12,7 @@
             Console.WriteLine(service.AllQuarterApartmentInfosTable());
             Console.WriteLine(service.HighestApartmentDebtTableByAllQuarters());
             Console.WriteLine(service.QuarterApartmentInfosTableWithZeroConsumptionByAllQuarters());
+            Console.WriteLine(service.QuarterApartmentInfoTableByQuarter(0, 8));
             Console.WriteLine(new QuarterApartmentInfoTable());
         }
     }
