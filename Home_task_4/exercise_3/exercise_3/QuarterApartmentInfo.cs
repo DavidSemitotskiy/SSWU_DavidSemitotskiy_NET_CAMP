@@ -32,39 +32,20 @@
             _totalPrice = consumptionPrice * outputIndicator;
         }
 
-        public int Id
-        {
-            get => _idQuarter;
-        }
+        public int Id => _idQuarter;
 
-        public ApartmentInfo ApartmentInfo
-        {
-            get => _apartment;
-        }
+        public ApartmentInfo ApartmentInfo => _apartment;
 
-        public int InputIndicator
-        {
-            get => _inputIndicator;
-        }
+        public int InputIndicator => _inputIndicator;
 
-        public int OutputIndicator
-        {
-            get => _outputIndicator;
-        }
+        public int OutputIndicator => _outputIndicator;
 
-        public DateTime FirstQuarterMonth
-        {
-            get => _firstQuarterMonth;
-        }
+        public DateTime FirstQuarterMonth => _firstQuarterMonth;
 
-        public DateTime SecondQuarterMonth
-        {
-            get => _secondQuarterMonth;
-        }
+        public DateTime SecondQuarterMonth => _secondQuarterMonth;
 
-        public DateTime ThirdQuarterMonth
-        {
-            get => _thirdQuarterMonth;
-        }
+        public DateTime ThirdQuarterMonth => _thirdQuarterMonth;
+
+        public decimal TotalPrice => _totalPrice;
     }
 }

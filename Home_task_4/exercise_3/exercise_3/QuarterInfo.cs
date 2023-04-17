@@ -15,19 +15,10 @@
             _consumptionPrice = consumptionPrice;
         }
 
-        public QuarterApartmentInfo[] QuarterApartmentInfos
-        {
-            get => _quarterApartmentInfos;
-        }
+        public IReadOnlyCollection<QuarterApartmentInfo> QuarterApartmentInfos => _quarterApartmentInfos;
 
-        public int QuarterNumber
-        {
-            get => _quarterNumber;
-        }
+        public int QuarterNumber => _quarterNumber;
 
-        public decimal ConsumptionPrice
-        {
-            get => _consumptionPrice;
-        }
+        public decimal ConsumptionPrice => _consumptionPrice;
     }
 }

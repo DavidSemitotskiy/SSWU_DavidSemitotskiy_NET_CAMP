@@ -14,9 +14,28 @@
             get => _repository;
         }
 
-        private string FormatDataToTable()
+        public QuarterApartmentInfoTable HighestApartmentDebtTableByAllQuarters()
         {
-            return "";
+            QuarterApartmentInfo highestApartmentDebt = _repository.FindApartmentWithHighestDebtInAllQuarters();
+            return new QuarterApartmentInfoTable(highestApartmentDebt);
+        }
+
+        public QuarterApartmentInfoTable QuarterApartmentInfoTableByQuarter(int quarterNumber, int apartmentId)
+        {
+            QuarterApartmentInfo quarterApartmentInfo = _repository.GetInfoForApartmentByQuarter(apartmentId, quarterNumber);
+            return new QuarterApartmentInfoTable(quarterApartmentInfo);
+        }
+
+        public QuarterApartmentInfoTable AllQuarterApartmentInfosTable()
+        {
+            QuarterInfo[] quarters = _repository.GetAllInfo();
+            return new QuarterApartmentInfoTable(quarters.SelectMany(quarter => quarter.QuarterApartmentInfos).ToArray());
+        }
+
+        public QuarterApartmentInfoTable QuarterApartmentInfosTableWithZeroConsumptionByAllQuarters()
+        {
+            var infos = _repository.FindApartmentsWithZeroConsumptionInAllQuarters();
+            return new QuarterApartmentInfoTable(infos);
         }
     }
 }

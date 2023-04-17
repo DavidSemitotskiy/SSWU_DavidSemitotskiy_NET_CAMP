@@ -21,7 +21,7 @@ namespace exercise_3
             return _quarterInfos;
         }
 
-        public QuarterInfo GetQuarterInfo(int quarterNumber)
+        public QuarterInfo GetQuarterInfoByNumber(int quarterNumber)
         {
             if (quarterNumber > _quarterCountInYear || quarterNumber < 0)
             {
@@ -31,9 +31,19 @@ namespace exercise_3
             return _quarterInfos[quarterNumber];
         }
 
-        public QuarterApartmentInfo FindApartmentWithZeroConsumption()
+        public QuarterApartmentInfo FindApartmentWithHighestDebtInAllQuarters()
         {
-            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).FirstOrDefault(quarterApartmentInfo => quarterApartmentInfo.OutputIndicator == 0);
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).MaxBy(quarterApartmentInfo => quarterApartmentInfo.TotalPrice);
+        }
+
+        public QuarterApartmentInfo[] FindApartmentsWithZeroConsumptionInAllQuarters()
+        {
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.OutputIndicator == 0).ToArray();
+        }
+
+        public QuarterApartmentInfo[] GetInfoForApartmentInAllQuarters(int apartmentId)
+        {
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.Id == apartmentId).ToArray();
         }
 
         public QuarterApartmentInfo GetInfoForApartmentByQuarter(int apartmentId, int quarterNumber)

@@ -2,17 +2,23 @@
 {
     public class ApartmentInfo
     {
+        private int _id;
+
+        private string _address;
+
+        private string _lastName;
+
         public ApartmentInfo(int id, string address, string lastName)
         {
-            Id = id;
-            Address = address;
-            LastName = lastName;
+            _id = id;
+            _address = address;
+            _lastName = lastName;
         }
 
-        public int Id { get; init; }
+        public int Id => _id;
 
-        private string Address { get; init; }
+        public string Address => _address;
 
-        private string LastName { get; init; }
+        public string LastName => _lastName;
     }
 }

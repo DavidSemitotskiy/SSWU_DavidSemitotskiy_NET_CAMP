@@ -4,11 +4,15 @@
     {
         public static void Main()
         {
+            Console.OutputEncoding = System.Text.Encoding.Unicode;
             string dataLocation = @"..\..\..\..\data.txt";
-            var electricityRep = new ElectricityRepository(dataLocation);
-            var result = electricityRep.FindApartmentWithZeroConsumption();
-            var apartmentInfo = electricityRep.GetInfoForApartmentByQuarter(3, 3);
-            var quarterInfo = electricityRep.GetQuarterInfo(0);
+            IElectricityRepository electricityRep = new ElectricityRepository(dataLocation);
+            IElectricityService service = new ElectricityService(electricityRep);
+            Console.WriteLine(service.QuarterApartmentInfoTableByQuarter(0, 2));
+            Console.WriteLine(service.AllQuarterApartmentInfosTable());
+            Console.WriteLine(service.HighestApartmentDebtTableByAllQuarters());
+            Console.WriteLine(service.QuarterApartmentInfosTableWithZeroConsumptionByAllQuarters());
+            Console.WriteLine(new QuarterApartmentInfoTable());
         }
     }
 }
