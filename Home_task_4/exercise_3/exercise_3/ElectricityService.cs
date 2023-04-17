@@ -14,6 +14,12 @@
             get => _repository;
         }
 
+        public QuarterApartmentInfoTable QuarterApartmentInfoTableInAllQuarters(int apartmentId)
+        {
+            IEnumerable<QuarterApartmentInfo> quarterApartmentInfos = _repository.GetInfoForApartmentInAllQuarters(apartmentId);
+            return new QuarterApartmentInfoTable(quarterApartmentInfos.ToArray());
+        }
+
         public QuarterApartmentInfoTable HighestApartmentDebtTableByAllQuarters()
         {
             QuarterApartmentInfo highestApartmentDebt = _repository.FindApartmentWithHighestDebtInAllQuarters();
@@ -28,14 +34,20 @@
 
         public QuarterApartmentInfoTable AllQuarterApartmentInfosTable()
         {
-            QuarterInfo[] quarters = _repository.GetAllInfo();
+            IEnumerable<QuarterInfo> quarters = _repository.GetAllInfo();
             return new QuarterApartmentInfoTable(quarters.SelectMany(quarter => quarter.QuarterApartmentInfos).ToArray());
         }
 
         public QuarterApartmentInfoTable QuarterApartmentInfosTableWithZeroConsumptionByAllQuarters()
         {
-            var infos = _repository.FindApartmentsWithZeroConsumptionInAllQuarters();
-            return new QuarterApartmentInfoTable(infos);
+            IEnumerable<QuarterApartmentInfo> infos = _repository.FindApartmentsWithZeroConsumptionInAllQuarters();
+            return new QuarterApartmentInfoTable(infos.ToArray());
+        }
+
+        public QuarterApartmentInfoTable QuarterApartmentInfosTableByQuarter(int quarterNumber)
+        {
+            QuarterInfo quarterInfo = _repository.GetQuarterInfoByNumber(quarterNumber);
+            return new QuarterApartmentInfoTable(quarterInfo == null ? null : quarterInfo.QuarterApartmentInfos);
         }
     }
 }

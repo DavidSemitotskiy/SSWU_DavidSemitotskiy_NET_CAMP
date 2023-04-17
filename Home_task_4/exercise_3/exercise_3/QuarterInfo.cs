@@ -15,7 +15,7 @@
             _consumptionPrice = consumptionPrice;
         }
 
-        public IReadOnlyCollection<QuarterApartmentInfo> QuarterApartmentInfos => _quarterApartmentInfos;
+        public QuarterApartmentInfo[] QuarterApartmentInfos => _quarterApartmentInfos;
 
         public int QuarterNumber => _quarterNumber;
 

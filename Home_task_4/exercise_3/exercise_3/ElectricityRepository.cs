@@ -16,7 +16,7 @@ namespace exercise_3
             LoadDataFromSource();
         }
 
-        public QuarterInfo[] GetAllInfo()
+        public IEnumerable<QuarterInfo> GetAllInfo()
         {
             return _quarterInfos;
         }
@@ -36,14 +36,14 @@ namespace exercise_3
             return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).MaxBy(quarterApartmentInfo => quarterApartmentInfo.TotalPrice);
         }
 
-        public QuarterApartmentInfo[] FindApartmentsWithZeroConsumptionInAllQuarters()
+        public IEnumerable<QuarterApartmentInfo> FindApartmentsWithZeroConsumptionInAllQuarters()
         {
-            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.OutputIndicator == 0).ToArray();
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.OutputIndicator == 0);
         }
 
-        public QuarterApartmentInfo[] GetInfoForApartmentInAllQuarters(int apartmentId)
+        public IEnumerable<QuarterApartmentInfo> GetInfoForApartmentInAllQuarters(int apartmentId)
         {
-            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.Id == apartmentId).ToArray();
+            return _quarterInfos.SelectMany(quarterInfo => quarterInfo.QuarterApartmentInfos).Where(quarterApartmentInfo => quarterApartmentInfo.ApartmentInfo.Id == apartmentId);
         }
 
         public QuarterApartmentInfo GetInfoForApartmentByQuarter(int apartmentId, int quarterNumber)

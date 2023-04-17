@@ -2,15 +2,15 @@
 {
     public interface IElectricityRepository
     {
-        public QuarterInfo[] GetAllInfo();
+        public IEnumerable<QuarterInfo> GetAllInfo();
 
         public QuarterInfo GetQuarterInfoByNumber(int quarterNumber);
 
         public QuarterApartmentInfo FindApartmentWithHighestDebtInAllQuarters();
 
-        public QuarterApartmentInfo[] FindApartmentsWithZeroConsumptionInAllQuarters();
+        public IEnumerable<QuarterApartmentInfo> FindApartmentsWithZeroConsumptionInAllQuarters();
 
-        public QuarterApartmentInfo[] GetInfoForApartmentInAllQuarters(int apartmentId);
+        public IEnumerable<QuarterApartmentInfo> GetInfoForApartmentInAllQuarters(int apartmentId);
 
         public QuarterApartmentInfo GetInfoForApartmentByQuarter(int apartmentId, int quarterNumber);
     }

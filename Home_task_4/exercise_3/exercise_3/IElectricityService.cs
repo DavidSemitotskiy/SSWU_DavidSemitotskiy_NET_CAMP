@@ -9,5 +9,9 @@
         public QuarterApartmentInfoTable AllQuarterApartmentInfosTable();
 
         public QuarterApartmentInfoTable QuarterApartmentInfosTableWithZeroConsumptionByAllQuarters();
+
+        public QuarterApartmentInfoTable QuarterApartmentInfoTableInAllQuarters(int apartmentId);
+
+        public QuarterApartmentInfoTable QuarterApartmentInfosTableByQuarter(int quarterNumber);
     }
 }
