@@ -9,6 +9,7 @@
         public Shop(string shopName, List<Department> departments)
         {
             _shopName = shopName;
+            _departments = departments;
         }
     }
 }

@@ -8,13 +8,20 @@
 
         private string _departmentName;
 
+        private string _previousDepartmentName;
+
         private bool _isMainDepartment = false;
 
-        public Department(string departmentName, bool isMainDepartment)
+        public Department(string previousDepartmentName, string departmentName, bool isMainDepartment = false)
         {
             _departmentName = departmentName;
             _isMainDepartment = isMainDepartment;
+            _previousDepartmentName = previousDepartmentName;
         }
+
+        public string DepartmentName => _departmentName;
+
+        public string FullDepartmentLocation => $"{_previousDepartmentName}/{_departmentName}";
 
         public void AddProduct(Product product)
         {
