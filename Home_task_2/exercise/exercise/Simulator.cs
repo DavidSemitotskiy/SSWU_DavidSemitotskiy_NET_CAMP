@@ -1,5 +1,5 @@
 ﻿namespace exercise
-{
+{// Одна з найкращих робіт. Я минулого разу оголошувала про це Вас не було в той момент на занятті(
     public class Simulator
     {
         private List<Consumer> _consumers;
