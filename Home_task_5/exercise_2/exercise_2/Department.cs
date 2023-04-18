@@ -19,9 +19,17 @@
             _previousDepartmentName = previousDepartmentName;
         }
 
+        public string PreviousDepartmentName => _previousDepartmentName;
+
+        public bool IsMainDepartment => _isMainDepartment;
+
         public string DepartmentName => _departmentName;
 
         public string FullDepartmentLocation => $"{_previousDepartmentName}/{_departmentName}";
+
+        public List<Product> Products => _departmentProducts;
+
+        public List<Department> EnclosedDepartments => _enclosedDepartments;
 
         public void AddProduct(Product product)
         {
