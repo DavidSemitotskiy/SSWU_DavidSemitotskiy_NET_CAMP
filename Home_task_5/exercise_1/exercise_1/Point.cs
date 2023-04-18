@@ -21,7 +21,7 @@ namespace exercise_1
 
         public static Orientation GetOrientation(Point p1, Point p2, Point p3)
         {
-            int orientation = ((p3.Y - p2.Y) * (p2.X - p1.X)) - ((p2.Y - p1.Y) / (p3.X - p2.X));
+            int orientation = ((p3.Y - p2.Y) * (p2.X - p1.X)) - ((p2.Y - p1.Y) * (p3.X - p2.X));
             if (orientation > 0)
             {
                 return Orientation.CounterClockWise;
@@ -38,6 +38,16 @@ namespace exercise_1
         public object Clone()
         {
             return new Point(X, Y);
+        }
+
+        public static bool operator == (Point p1, Point p2)
+        {
+            return p1.X == p2.X && p1.Y == p2.Y;
+        }
+
+        public static bool operator != (Point p1, Point p2)
+        {
+            return !(p1 == p2);
         }
     }
 }
