@@ -1,6 +1,6 @@
 ﻿namespace exercise_1
 {
-    public class Garden
+    public class Garden : IComparable<Garden>
     {
         private List<Tree> _trees;
 
@@ -16,6 +16,36 @@
         }
 
         public double TotalDistanceFence => _totalDistanceFence;
+
+        public int CompareTo(Garden? other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            if (Equals(other))
+            {
+                return 0;
+            }
+
+            return _totalDistanceFence > other._totalDistanceFence ? 1 : -1;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || obj is not Garden) 
+            {
+                return false;
+            }
+
+            return GetHashCode() == obj.GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return _totalDistanceFence.GetHashCode();
+        }
 
         private double CountTotalDistanceFence()
         {

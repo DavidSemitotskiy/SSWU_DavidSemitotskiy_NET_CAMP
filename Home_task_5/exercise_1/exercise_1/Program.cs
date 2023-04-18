@@ -37,6 +37,9 @@
 
             Garden secondGarden = new Garden(secondGardenTrees);
             Console.WriteLine(secondGarden.TotalDistanceFence);
+
+            Console.WriteLine(firstGarden.Equals(secondGarden));
+            Console.WriteLine(firstGarden.CompareTo(secondGarden));
         }
     }
 }
