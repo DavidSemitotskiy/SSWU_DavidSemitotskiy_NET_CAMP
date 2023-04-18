@@ -17,6 +17,36 @@
 
         public double TotalDistanceFence => _totalDistanceFence;
 
+        public static bool operator ==(Garden garden1, Garden garden2)
+        {
+            return garden1.Equals(garden2);
+        }
+
+        public static bool operator !=(Garden garden1, Garden garden2)
+        {
+            return !(garden1.Equals(garden2));
+        }
+
+        public static bool operator >(Garden garden1, Garden garden2)
+        {
+            return garden1.CompareTo(garden2) > 0;
+        }
+
+        public static bool operator <(Garden garden1, Garden garden2)
+        {
+            return garden1.CompareTo(garden2) < 0;
+        }
+
+        public static bool operator >=(Garden garden1, Garden garden2)
+        {
+            return garden1.CompareTo(garden2) >= 0;
+        }
+
+        public static bool operator <=(Garden garden1, Garden garden2)
+        {
+            return garden1.CompareTo(garden2) <= 0;
+        }
+
         public int CompareTo(Garden? other)
         {
             if (other == null)

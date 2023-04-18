@@ -40,6 +40,12 @@
 
             Console.WriteLine(firstGarden.Equals(secondGarden));
             Console.WriteLine(firstGarden.CompareTo(secondGarden));
+            Console.WriteLine(firstGarden == secondGarden);
+            Console.WriteLine(firstGarden != secondGarden);
+            Console.WriteLine(firstGarden > secondGarden);
+            Console.WriteLine(firstGarden < secondGarden);
+            Console.WriteLine(firstGarden >= secondGarden);
+            Console.WriteLine(firstGarden <= secondGarden);
         }
     }
 }
