@@ -1,6 +1,8 @@
-﻿namespace exercise_1
+﻿using System;
+
+namespace exercise_1
 {
-    public class Point
+    public class Point : ICloneable
     {
         public Point(int x, int y)
         {
@@ -31,6 +33,11 @@
             }
 
             return Orientation.Collinear;
+        }
+
+        public object Clone()
+        {
+            return new Point(X, Y);
         }
     }
 }
