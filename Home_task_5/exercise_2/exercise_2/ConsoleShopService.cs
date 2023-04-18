@@ -11,21 +11,28 @@
 
         public void StartWork()
         {
-            Console.WriteLine("1)Show shop hierarchy");
-            Console.WriteLine("2)Buy products");
-            switch (int.Parse(Console.ReadLine()))
+            bool exit = false;
+            while (!exit)
             {
-                case 1:
-                    {
-                        ShowShopHierarchy();
-                        break;
-                    }
-                case 2:
-                    {
-                        ShopBox purchase = Buy();
-                        Console.WriteLine(purchase);
-                        break;
-                    }
+                Console.WriteLine("1)Show shop hierarchy");
+                Console.WriteLine("2)Buy products");
+                switch (int.Parse(Console.ReadLine()))
+                {
+                    case 1:
+                        {
+                            ShowShopHierarchy();
+                            break;
+                        }
+                    case 2:
+                        {
+                            ShopBox purchase = Buy();
+                            Console.WriteLine(purchase);
+                            break;
+                        }
+                }
+
+                Console.Write("Чи бажаєте завершити роботу з магазином?(True/False): ");
+                exit = bool.Parse(Console.ReadLine());
             }
         }
 
