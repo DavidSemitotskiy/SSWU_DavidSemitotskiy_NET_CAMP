@@ -6,7 +6,7 @@
 
         private int _width;
 
-        private string _name;
+        private string _productName;
 
         private string _location;
 
@@ -14,7 +14,7 @@
         {
             _height = height;
             _width = width;
-            _name = name;
+            _productName = name;
             _location = location;
         }
     }
