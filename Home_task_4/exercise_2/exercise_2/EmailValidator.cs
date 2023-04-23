@@ -3,7 +3,7 @@
 namespace exercise_2
 {
     public static class EmailValidator
-    {
+    {// надалі тут можна працювати з множинами
         private static char[] _forbiddenSpecialSymbols = { '\"', '(', ')', ',', ':', ';', '<', '>', '[', ']', '\\', ' ' };
 
         private static string[] _reservedDomains = { "com", "edu", "org", "uk", "de", "ua" };
