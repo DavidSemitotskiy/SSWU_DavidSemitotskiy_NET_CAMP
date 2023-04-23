@@ -1,5 +1,5 @@
 ﻿namespace exercise_2
-{
+{// Ідея добра, але не допрацьована система обходу деревовидної структури.
     public class Department
     {
         private List<Department> _enclosedDepartments = new List<Department>();
