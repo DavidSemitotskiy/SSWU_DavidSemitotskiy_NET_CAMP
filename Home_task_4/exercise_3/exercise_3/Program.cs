@@ -1,7 +1,7 @@
 ﻿namespace exercise_3
 {
     public class Program
-    {
+    {// Форматування добре. Але не перевіряється, чи кінцевий показник є >=за попередній
         public static void Main()
         {
             Console.OutputEncoding = System.Text.Encoding.Unicode;
