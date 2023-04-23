@@ -1,7 +1,7 @@
 ﻿using System.Text;
 
 namespace exercise_4
-{
+{// не вистачає тільки неявного приведення до типу масивів. Молодець.
     public class Tensor<T>
     {
         private T[]? _arr;
