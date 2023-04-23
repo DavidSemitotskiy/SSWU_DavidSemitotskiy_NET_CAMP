@@ -1,5 +1,5 @@
 ﻿namespace exercise_1
-{
+{// Периметр і лінійна оболонка не реалізовані.
     public class Garden : IComparable<Garden>
     {
         private List<Tree> _trees;
@@ -9,7 +9,7 @@
         private double _totalDistanceFence;
 
         public Garden(List<Tree> trees)
-        {
+        {// треба глибоку копію.
             _trees = trees;
             _fences = FenceBuilder.BuildFence(_trees);
             _totalDistanceFence = CountTotalDistanceFence();
@@ -46,7 +46,7 @@
         {
             return garden1.CompareTo(garden2) <= 0;
         }
-
+// У такому варіанті метод не дуже потрібний.
         public int CompareTo(Garden? other)
         {
             if (other == null)
