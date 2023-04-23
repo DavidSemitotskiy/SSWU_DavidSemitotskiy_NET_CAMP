@@ -19,7 +19,7 @@ namespace exercise_2
             {
                 return false;
             }
-
+// Можна б було посплітити по собачці і перевірити, чи довжина результату є 2, а потім вже продовжити
             email = EmailWithoutComments(email);
             int lastIndex = email.LastIndexOf('@');
             string localPart = email[..lastIndex];
