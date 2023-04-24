@@ -1,5 +1,5 @@
 ﻿namespace exercise_1
-{
+{//Davyd	Semytotskyi	95	0	20	98	98	95	70	101,2/ Вітаю Вас в 2 турі.
     public class Program
     {
         public static void Main()
