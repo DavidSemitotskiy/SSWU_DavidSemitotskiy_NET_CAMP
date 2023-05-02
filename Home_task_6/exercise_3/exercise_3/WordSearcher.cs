@@ -13,6 +13,7 @@
         {
             string text = _text;
             text = text?.Trim();
+            // Надлишково закручено. Можна за допомогою множин...
             (string? word, bool isSuccess) resultGettingWord;
             while ((resultGettingWord = GetWord(text)).isSuccess)
             {
