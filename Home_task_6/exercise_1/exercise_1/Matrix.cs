@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 
 namespace exercise_1
-{
+{// так і не знайшла використання yield(((. мусимо продискутувати над Вашою реалізацією.
     public class Matrix : IEnumerable<int>
     {
         private int[,] _matrix;
