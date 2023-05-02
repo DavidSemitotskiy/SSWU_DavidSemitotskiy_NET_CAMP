@@ -5,7 +5,7 @@ namespace exercise_1
     public class DiagonalTreverseEnumerator : IEnumerator<int>
     {
         private int[,] _matrix;
-
+//Не бачу змісту ці змінні заносити в поля класу. 
         private int _indexCol = -1;
 
         private int _indexRow = -1;
