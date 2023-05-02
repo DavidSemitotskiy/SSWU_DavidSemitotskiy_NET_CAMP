@@ -5,6 +5,8 @@
         public static IEnumerable<int> MergeAndSortCollectionsLinq(params IEnumerable<int>[] collections)
         {
             IEnumerable<int> joined = collections.SelectMany(x => x);
+            //Як мінімум  joined.Order() мала б бути винесена за цикл. 
+            // ви вже сформували колекцію і її порційно повертаєте, а треба її під час формування повертати.
             foreach (int item in joined.Order())
             {
                 yield return item;
