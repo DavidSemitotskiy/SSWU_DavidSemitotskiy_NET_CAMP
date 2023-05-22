@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-22T17:32:10.675Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="ma9k5-jOLgAXgxXrJiKx" version="21.3.2" type="device">
+<mxfile host="app.diagrams.net" modified="2023-05-22T18:06:13.841Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36" etag="v3iEUEPUowss40v32j3m" version="21.3.2" type="device">
   <diagram name="Страница 1" id="9WI7ebGdSnUaAv8R2O5D">
     <mxGraphModel dx="2547" dy="1952" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -140,7 +140,7 @@
           <mxGeometry y="92" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="QAf2smYP1nOFS-0eRWHx-2" value="Kitchen" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="310" y="10" width="240" height="170" as="geometry" />
+          <mxGeometry x="310" y="30" width="240" height="130" as="geometry" />
         </mxCell>
         <mxCell id="QAf2smYP1nOFS-0eRWHx-3" value="- _chefs: List&amp;lt;Chef&amp;gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;- _chain: IHandler" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="QAf2smYP1nOFS-0eRWHx-2">
           <mxGeometry y="26" width="240" height="44" as="geometry" />
@@ -148,11 +148,11 @@
         <mxCell id="QAf2smYP1nOFS-0eRWHx-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="QAf2smYP1nOFS-0eRWHx-2">
           <mxGeometry y="70" width="240" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="QAf2smYP1nOFS-0eRWHx-5" value="+ Kitchen(chefs: List&amp;lt;Chef&amp;gt;, chainCreator: ICookChainHandlersFactory)&lt;br&gt;+ GetChefsBySpecialization(specialization: DishCategory): List&amp;lt;Chef&amp;gt;&lt;br&gt;+ ExecuteOrder(order: Order): IReadOnlyCollection&amp;lt;Chef&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="QAf2smYP1nOFS-0eRWHx-2">
-          <mxGeometry y="78" width="240" height="92" as="geometry" />
+        <mxCell id="QAf2smYP1nOFS-0eRWHx-5" value="+ Kitchen(chefs: List&amp;lt;Chef&amp;gt;, chainCreator: ICookChainHandlersFactory)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="QAf2smYP1nOFS-0eRWHx-2">
+          <mxGeometry y="78" width="240" height="52" as="geometry" />
         </mxCell>
         <mxCell id="QAf2smYP1nOFS-0eRWHx-6" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;ICookChainHandlersFactory&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ CreateCookChainHandlers(chefs: List&amp;lt;Chef&amp;gt;): IHandler&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="720" y="18" width="235" height="80" as="geometry" />
+          <mxGeometry x="720" y="38" width="235" height="80" as="geometry" />
         </mxCell>
         <mxCell id="QAf2smYP1nOFS-0eRWHx-7" value="OrderDishInfo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="610" y="550" width="190" height="160" as="geometry" />
@@ -240,17 +240,23 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="QAf2smYP1nOFS-0eRWHx-29" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.338;entryY=0.018;entryDx=0;entryDy=0;exitX=0.757;exitY=1.01;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="QAf2smYP1nOFS-0eRWHx-5" target="Mqgpa7f1FhENW2-aqIzJ-75">
+        <mxCell id="QAf2smYP1nOFS-0eRWHx-29" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;entryX=0.52;entryY=1.118;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" edge="1" parent="1" source="QAf2smYP1nOFS-0eRWHx-40" target="Mqgpa7f1FhENW2-aqIzJ-78">
           <mxGeometry width="160" relative="1" as="geometry">
-            <mxPoint x="485" y="180" as="sourcePoint" />
-            <mxPoint x="700" y="60" as="targetPoint" />
+            <mxPoint x="1120" y="-200" as="sourcePoint" />
+            <mxPoint x="500" y="880" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1120" y="-212" />
+              <mxPoint x="1120" y="870" />
+              <mxPoint x="523" y="870" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="QAf2smYP1nOFS-0eRWHx-31" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1.004;exitY=0.121;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="QAf2smYP1nOFS-0eRWHx-5" target="QAf2smYP1nOFS-0eRWHx-15">
+        <mxCell id="QAf2smYP1nOFS-0eRWHx-31" value="Use" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="QAf2smYP1nOFS-0eRWHx-40" target="QAf2smYP1nOFS-0eRWHx-15">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="540" y="530" as="sourcePoint" />
             <mxPoint x="690" y="100" as="targetPoint" />
             <Array as="points">
+              <mxPoint x="695" y="-185" />
               <mxPoint x="695" y="100" />
             </Array>
           </mxGeometry>
@@ -288,6 +294,15 @@
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="630" y="230" as="sourcePoint" />
             <mxPoint x="790" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="QAf2smYP1nOFS-0eRWHx-40" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;IKitchen&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ GetChefsBySpecialization(specialization: DishCategory): List&amp;lt;Chef&amp;gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;+ ExecuteOrder(order: Order): IReadOnlyCollection&amp;lt;Chef&amp;gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="310" y="-240" width="240" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="QAf2smYP1nOFS-0eRWHx-41" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="QAf2smYP1nOFS-0eRWHx-2" target="QAf2smYP1nOFS-0eRWHx-40">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="310" y="70" as="sourcePoint" />
+            <mxPoint x="470" y="70" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
