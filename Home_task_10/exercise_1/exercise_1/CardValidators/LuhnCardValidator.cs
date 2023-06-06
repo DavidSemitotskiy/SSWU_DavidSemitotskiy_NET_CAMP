@@ -30,8 +30,8 @@ namespace exercise_1.CardValidators
                 return new CardValidationResult(false, CardValidatedState.None, card);
             }
 
-            bool isValidCardByLunh = IsValidCardLuhn(cardWithoutSpaces);
-            if (!isValidCardByLunh)
+            bool isValidCardByLuhn = IsValidCardLuhn(cardWithoutSpaces);
+            if (!isValidCardByLuhn)
             {
                 return new CardValidationResult(false, CardValidatedState.None, card);
             }
