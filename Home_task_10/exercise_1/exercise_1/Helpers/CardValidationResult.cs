@@ -1,4 +1,4 @@
-﻿namespace exercise_1
+﻿namespace exercise_1.Helpers
 {
     public class CardValidationResult
     {

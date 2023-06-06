@@ -1,4 +1,7 @@
-﻿namespace exercise_1
+﻿using exercise_1.CardSelectors;
+using exercise_1.Helpers;
+
+namespace exercise_1.CardValidators
 {
     public class LuhnCardValidator : ICardValidator
     {
@@ -76,7 +79,7 @@
                 if (multipliedOddValue >= 10)
                 {
                     int secondNumber = multipliedOddValue % 10;
-                    int firstNumber = (multipliedOddValue / 10) % 10;
+                    int firstNumber = multipliedOddValue / 10 % 10;
                     multipliedOddValue = secondNumber + firstNumber;
                 }
 
