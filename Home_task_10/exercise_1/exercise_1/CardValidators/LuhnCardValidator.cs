@@ -27,13 +27,13 @@ namespace exercise_1.CardValidators
             string cardWithoutSpaces = card.Replace(" ", "");
             if (!long.TryParse(cardWithoutSpaces, out long cardNumeric))
             {
-                return new CardValidationResult(false, CardValidatedState.None, card);
+                return new CardValidationResult(false, CardValidatedState.Incorrect, card);
             }
 
             bool isValidCardByLuhn = IsValidCardLuhn(cardWithoutSpaces);
             if (!isValidCardByLuhn)
             {
-                return new CardValidationResult(false, CardValidatedState.None, card);
+                return new CardValidationResult(false, CardValidatedState.Incorrect, card);
             }
 
             bool isCardSelected = false;

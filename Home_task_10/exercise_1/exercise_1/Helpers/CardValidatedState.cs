@@ -2,7 +2,7 @@
 {
     public enum CardValidatedState
     {
-        None,
+        Incorrect,
         Unknown,
         Recognized
     }
