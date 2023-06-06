@@ -2,10 +2,6 @@
 {
     public class VisaCardSelector : ICardSelector
     {
-        public VisaCardSelector()
-        {
-        }
-
         public string CardType => "Visa";
 
         public bool IsThisType(string card)

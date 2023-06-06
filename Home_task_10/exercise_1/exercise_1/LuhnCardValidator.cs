@@ -2,15 +2,16 @@
 {
     public class LuhnCardValidator : ICardValidator
     {
-        private List<ICardSelector> _cardSelectors = new List<ICardSelector>
-        {
-            new AmericanExpressCardSelector(),
-            new MasterCardSelector(),
-            //new VisaCardSelector()
-        };
+        private List<ICardSelector> _cardSelectors;
 
         public LuhnCardValidator()
         {
+            _cardSelectors = new List<ICardSelector>
+            {
+                new AmericanExpressCardSelector(),
+                new MasterCardSelector(),
+                new VisaCardSelector()
+            };
         }
 
         public LuhnCardValidator(IEnumerable<ICardSelector> cardSelectors)
@@ -23,7 +24,13 @@
             string cardWithoutSpaces = card.Replace(" ", "");
             if (!long.TryParse(cardWithoutSpaces, out long cardNumeric))
             {
-                return CardValidationResult.CreateNotValidCardResult(card);
+                return new CardValidationResult(false, CardValidatedState.None, card);
+            }
+
+            bool isValidCardByLunh = IsValidCardLuhn(cardWithoutSpaces);
+            if (!isValidCardByLunh)
+            {
+                return new CardValidationResult(false, CardValidatedState.None, card);
             }
 
             bool isCardSelected = false;
@@ -40,12 +47,10 @@
 
             if (convenientSelector == null)
             {
-                return CardValidationResult.CreateNotValidCardResult(card);
+                return new CardValidationResult(true, CardValidatedState.Unknown, card);
             }
 
-
-            return IsValidCardLuhn(cardWithoutSpaces) ? CardValidationResult.CreateValidCardResult(card, convenientSelector.CardType)
-                : CardValidationResult.CreateNotValidCardResult(card);
+            return new CardValidationResult(true, CardValidatedState.Recognized, card, convenientSelector.CardType);
         }
 
         private bool IsValidCardLuhn(string card)
