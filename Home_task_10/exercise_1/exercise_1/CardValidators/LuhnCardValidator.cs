@@ -79,7 +79,7 @@ namespace exercise_1.CardValidators
                 if (multipliedOddValue >= 10)
                 {
                     int secondNumber = multipliedOddValue % 10;
-                    int firstNumber = multipliedOddValue / 10 % 10;
+                    int firstNumber = multipliedOddValue / 10;
                     multipliedOddValue = secondNumber + firstNumber;
                 }
 
